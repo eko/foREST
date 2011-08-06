@@ -7,11 +7,13 @@
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
 
-require_once 'src/foREST/Core/Bootstrap.php';
+require_once 'src/Forest/Bootstrap.php';
 
-use foRest\Core as Core;
+use Forest;
 
-$forest = new Core\Bootstrap(true);
+$forest = new Forest\Bootstrap(
+    array('debug' => true)
+);
 
-echo $forest->getDuration(); exit;
+echo $forest->getDuration();
 ?>

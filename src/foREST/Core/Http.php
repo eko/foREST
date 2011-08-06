@@ -7,7 +7,7 @@
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
 
-namespace foRest\Core;
+namespace Forest\Core;
 
 /**
  * HTTP

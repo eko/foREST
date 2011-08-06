@@ -7,12 +7,12 @@
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
 
-namespace foRest\Core;
+namespace Forest\Core;
 
 /**
  * Abstract class
  */
-abstract class Abstraction {
+class Abstraction {
     /**
      * Instance object
      * @var object $_instance
@@ -29,9 +29,9 @@ abstract class Abstraction {
      *
      * @return type 
      */
-    public function singleton() {
-        if (null === $this->_instance) {
-            $class = __CLASS__;
+    public static function singleton() {
+        if (null === self::$_instance) {
+            $class = get_called_class();
             self::$_instance = new $class();
         }
         

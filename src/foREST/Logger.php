@@ -7,7 +7,9 @@
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
 
-namespace foRest\Logger;
+namespace Forest;
+
+use Forest\Core\Abstraction;
 
 /**
  * Logger
@@ -27,30 +29,44 @@ class Logger extends Abstraction {
      * Logs file path
      * @var string
      */
-    private $path = 'logs';
+    private $_path = 'logs';
     
     /**
      * Debug filename
      * @var string
      */
-    private $filename = 'debug.log';
+    private $_filename = 'debug.log';
     
     /**
      * Constructor
      * @param string $path
+     * @param string $filename
      */
-    public function __construct($path = null) {
+    public function __construct($path = null, $filename = null) {
         if (null !== $path) {
             $this->path = $path;
+        }
+        
+        if (null !== $filename) {
+            $this->_filename = $filename;
         }
     }
     
     /**
-     * Set debug filename
-     * @param string $filename
+     * Get full log filepath
+     * @return string
      */
-    public function setFilename($filename) {
-        $this->filename = $filename;
+    public function getFilepath() {
+        return realpath($this->_path) . DIRECTORY_SEPARATOR . $this->_filename;
+    }
+    
+    /**
+     * Return level and date format prefixes
+     * @param string $level
+     * @return string
+     */
+    public function getPrefixes($level) {
+        return '[' . $level . '] ' . date('Y-m-d H:i:s') . ' - ';
     }
     
     /**
@@ -58,9 +74,9 @@ class Logger extends Abstraction {
      * @param string $message
      * @param const $level
      */
-    public static function write($message, $level = self::LEVEL_INFO) {
-        $file = fopen($this->path . '/' . $this->filename, 'a');
-        fwrite($file, '[' . $level . '] ' . $message . "\r\n");
+    public function write($message, $level = self::LEVEL_INFO) {
+        $file = fopen($this->getFilepath(), 'a');
+        fwrite($file, $this->getPrefixes($level) . $message . "\r\n");
         fclose($file);
     }
 }
