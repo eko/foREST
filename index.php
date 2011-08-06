@@ -9,8 +9,6 @@
 
 require_once 'src/Forest/Bootstrap.php';
 
-use Forest;
-
 $forest = new Forest\Bootstrap(
     array('debug' => true)
 );
