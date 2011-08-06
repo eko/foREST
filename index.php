@@ -11,10 +11,7 @@ require_once 'src/foREST/Core/Bootstrap.php';
 
 use foRest\Core as Core;
 
-$forest = new Core\Bootstrap();
+$forest = new Core\Bootstrap(true);
 
-$http = new Core\Http();
-$http->collect();
-
-var_dump($http->getMethod()); exit;
+echo $forest->getDuration(); exit;
 ?>
