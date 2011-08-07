@@ -1,4 +1,5 @@
 # files/folders ignored
+.gitignore
 nbproject
 BALSAMIQ
 debug.log
