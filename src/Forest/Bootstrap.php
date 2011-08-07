@@ -42,7 +42,7 @@ class Bootstrap
      * @param array $options
      */
     public function __construct($options = array()) {
-        if (true === isset($options['debug']) && true === $options['debug']) {
+        if (true === isset($options['debug']) && true == $options['debug']) {
             $start = microtime(true);
         }
         
@@ -50,7 +50,7 @@ class Bootstrap
         
         $this->boot();
         
-        if (true === isset($options['debug']) && true === $options['debug']) {
+        if (true === isset($options['debug']) && true == $options['debug']) {
             $end = microtime(true);
             $this->_duration = ($end - $start);
         }
@@ -87,7 +87,7 @@ class Bootstrap
      */
     public function getDuration() {
         if (false === isset($this->_options['debug'])
-                || false === $this->_options['debug']) {
+                || false == $this->_options['debug']) {
             throw new Exception('You need to enable debug mode to get duration time.');
         }
         
