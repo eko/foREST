@@ -7,11 +7,11 @@
  * @author Vincent Composieux <vincent.composieux@gmail.com>
  */
 
-$queries['books.list'] = array(
+$queries['authors.list'] = array(
     'database' => 'main',
     'query'    => "SELECT *
-                   FROM books
-                   WHERE title = ':title:'
-                   {AND year = :year:}"
+                   FROM authors
+                   WHERE name = ':name:'
+                   {AND age = :age:}"
 );
 ?>

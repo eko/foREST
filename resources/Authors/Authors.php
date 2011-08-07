@@ -12,18 +12,18 @@ namespace Forest\Resources;
 use Forest\Core\Resource as Resource;
 
 /**
- * Books
+ * Authors
  */
-class Books extends Resource {
+class Authors extends Resource {
     /**
-     * List all books
+     * List all authors
      * 
      * @param Request $request
      * 
      * @return array
      */
-    public function getBooks(Request $request) {
-        return array('books' => array('book1', 'book2'));
+    public function getAuthors(Request $request) {
+        return array('authors' => array('author1', 'author2'));
     }
 }
 ?>
