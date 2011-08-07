@@ -26,8 +26,9 @@ class Abstraction {
     private static $_registry = array();
     
     /**
-     *
-     * @return type 
+     * Singleton design pattern
+     * 
+     * @return mixed
      */
     public static function singleton() {
         if (null === self::$_instance) {
@@ -40,8 +41,10 @@ class Abstraction {
     
     /**
      * Set a new property entry in registry
+     * 
      * @param string $key
      * @param mixed $value
+     * 
      * @return mixed $value
      */
     public function setProperty($key, $value) {
@@ -52,7 +55,9 @@ class Abstraction {
     
     /**
      * Get property from registry
+     * 
      * @param string $key
+     * 
      * @return mixed $value
      */
     public function getProperty($key) {

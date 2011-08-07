@@ -37,6 +37,7 @@ class Logger extends Abstraction {
     
     /**
      * Constructor
+     * 
      * @param string $path
      * @param string $filename
      */
@@ -52,6 +53,7 @@ class Logger extends Abstraction {
     
     /**
      * Get full log filepath
+     * 
      * @return string
      */
     public function getFilepath() {
@@ -60,7 +62,9 @@ class Logger extends Abstraction {
     
     /**
      * Return level and date format prefixes
+     * 
      * @param string $level
+     * 
      * @return string
      */
     public function getPrefixes($level) {
@@ -69,6 +73,7 @@ class Logger extends Abstraction {
     
     /**
      * Write message in logs
+     * 
      * @param string $message
      * @param const $level
      */

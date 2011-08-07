@@ -15,15 +15,14 @@ namespace Forest\Core;
 class Resource extends Abstraction {
     
     /**
-     * Set a new property entry in registry
+     * Execute a new query
+     * 
      * @param string $key
-     * @param mixed $value
-     * @return mixed $value
+     * 
+     * @return array $result
      */
-    public function setProperty($key, $value) {
-        self::$_registry[$key] = $value;
-        
-        return $value;
+    public function query($key) {
+        return array();
     }
 }
 ?>

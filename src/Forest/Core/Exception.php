@@ -14,10 +14,13 @@ namespace Forest\Core;
  */
 class Exception extends \Exception {
     /**
-     *
+     * Constructor
+     * 
      * @param string $message
      * @param string $code
      * @param string $previous
+     * 
+     * @throws Exception
      */
     public function __construct ($message, $code = null, $previous = null) {
         Logger::singleton()->write($message);

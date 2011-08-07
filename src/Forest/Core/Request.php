@@ -34,6 +34,7 @@ class Request
     
     /**
      * Return HTTP Method
+     * 
      * @return string $_method
      */
     public function getMethod() {
@@ -42,6 +43,7 @@ class Request
     
     /**
      * Return HTTP Protocol
+     * 
      * @return string $_protocol
      */
     public function getProtocol() {
@@ -50,6 +52,7 @@ class Request
     
     /**
      * Return HTTP Uri
+     * 
      * @return string $_uri
      */
     public function getUri() {
