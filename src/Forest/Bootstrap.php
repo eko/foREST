@@ -9,7 +9,7 @@
 
 namespace Forest;
 
-use Forest\Core\Http as Http;
+use Forest\Core\Request as Request;
 use Forest\Core\Exception as Exception;
 
 use Forest\Logger as Logger;
@@ -20,10 +20,10 @@ use Forest\Logger as Logger;
 class Bootstrap
 {
     /**
-     * Http object
-     * @var object Core\Http
+     * Http request object
+     * @var object Core\Request
      */
-    private $_http = null;
+    private $_request = null;
     
     /**
      * Total call duration (debug mode)
@@ -42,19 +42,15 @@ class Bootstrap
      * @param array $options
      */
     public function __construct($options = array()) {
-        if (true === isset($options['debug']) && true == $options['debug']) {
-            $start = microtime(true);
-        }
+        $start = microtime(true);
         
         spl_autoload_register(__CLASS__ .'::autoload');
         
-        $this->boot();
+        $this->run();
         
-        if (true === isset($options['debug']) && true == $options['debug']) {
-            $end = microtime(true);
-            $this->_duration = ($end - $start);
-        }
+        $end = microtime(true);
         
+        $this->_duration = ($end - $start);
         $this->_options = $options;
     }
     
@@ -73,11 +69,11 @@ class Bootstrap
     }
     
     /**
-     * Boot application
+     * Run application
      */
-    private function boot() {
-        $this->_http = new Http();
-        $this->_http->collect();
+    private function run() {
+        $this->_request = new Request();
+        $this->_request->analyze();
     }
     
     /**

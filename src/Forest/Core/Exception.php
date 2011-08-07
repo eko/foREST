@@ -9,8 +9,6 @@
 
 namespace Forest\Core;
 
-use Forest\Logger as Logger;
-
 /**
  * ForestException
  */
