@@ -9,8 +9,9 @@
 
 namespace Forest;
 
-use Forest\Core\Request as Request;
 use Forest\Core\Exception as Exception;
+use Forest\Core\Filters as Filters;
+use Forest\Core\Request as Request;
 
 use Forest\Logger as Logger;
 
@@ -19,12 +20,6 @@ use Forest\Logger as Logger;
  */
 class Bootstrap
 {
-    /**
-     * Http request object
-     * @var object Core\Request
-     */
-    private $_request = null;
-    
     /**
      * Options availables
      * @var array
@@ -132,23 +127,21 @@ class Bootstrap
      * Run application
      */
     private function run() {
-        $this->_request = new Request();
-        $this->_request->analyze();
+        $request = new Request();
+        $request->analyze();
+        
+        $filters = new Filters($request);
+        $filters->apply();
     }
     
     /**
      * Return total call duration
      * 
-     * @throws Forest\Exception
+     * @throws Forest\Core\Exception
      * 
      * @return float $_duration
      */
     public function getDuration() {
-        if (false === isset($this->_options['debug'])
-                || false == $this->_options['debug']) {
-            throw new Exception('You need to enable debug mode to get duration time.');
-        }
-        
         return (number_format($this->_duration, 5) . 'ms');
     }
 }
