@@ -10,7 +10,7 @@
 namespace Forest;
 
 use Forest\Core\Exception as Exception;
-use Forest\Core\Filters as Filters;
+use Forest\Core\Dispatcher as Dispatcher;
 use Forest\Core\Request as Request;
 
 use Forest\Logger as Logger;
@@ -130,8 +130,8 @@ class Bootstrap
         $request = new Request();
         $request->analyze();
         
-        $filters = new Filters($request);
-        $filters->apply();
+        $dispatcher = new Dispatcher($request);
+        $dispatcher->dispatch();
     }
     
     /**
