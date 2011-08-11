@@ -20,6 +20,12 @@ use Forest\Core\Response as Response;
  */
 class Loader
 {
+    /**
+     * Filter method
+     * 
+     * @param Request $request
+     * @param Response $response 
+     */
     public function filter(Request &$request, Response &$response) {
         $method = $request->getMethod();
         $uri = $request->getUri();
