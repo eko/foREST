@@ -39,6 +39,13 @@ class Request
     public $_uri = null;
     
     /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->analyze();
+    }
+    
+    /**
      * Return HTTP Method
      * 
      * @return string $_method

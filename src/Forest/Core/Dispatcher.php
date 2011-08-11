@@ -11,6 +11,7 @@ namespace Forest\Core;
 
 use Forest\Core\Exception as Exception;
 use Forest\Core\Response as Response;
+use Forest\Core\Request as Request;
 
 /**
  * Dispatcher
@@ -43,11 +44,9 @@ class Dispatcher
     
     /**
      * Constructor
-     * 
-     * @param Request $request
      */
-    public function __construct(Request $request) {
-        $this->_request = $request;
+    public function __construct() {
+        $this->_request = new Request();
         $this->_response = new Response();
     }
     

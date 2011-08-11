@@ -51,7 +51,9 @@ class Bootstrap
         spl_autoload_register(__CLASS__ .'::autoload');
         
         $this->loadResources();
-        $this->run();
+        
+        $dispatcher = new Dispatcher();
+        $dispatcher->dispatch();
         
         $end = microtime(true);
         
@@ -121,17 +123,6 @@ class Bootstrap
         closedir($handle);
         
         return $items;
-    }
-    
-    /**
-     * Run application
-     */
-    private function run() {
-        $request = new Request();
-        $request->analyze();
-        
-        $dispatcher = new Dispatcher($request);
-        $dispatcher->dispatch();
     }
     
     /**
