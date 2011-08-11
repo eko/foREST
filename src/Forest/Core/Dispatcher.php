@@ -54,11 +54,12 @@ class Dispatcher
      * Execute filters
      */
     public function dispatch() {
-        foreach ($this->_filters as $filter) {
-            if (true === class_exists($filter) && true === method_exists($filter, 'filter')) {
-                $class = $filter::filter($this->_request, $this->_response);
+        foreach ($this->_filters as $class) {
+            if (true === class_exists($class) && true === method_exists($class, 'filter')) {
+                $filter = new $class;
+                $filter->filter($this->_request, $this->_response);
             } else {
-                throw new Exception(sprintf("Filter class '%s' or method 'filter' does not exists.", $filter));
+                throw new Exception(sprintf("Filter class '%s' or method 'filter' does not exists.", $class));
             }
         }
     }

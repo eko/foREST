@@ -9,9 +9,8 @@
 
 namespace Forest;
 
-use Forest\Core\Exception as Exception;
 use Forest\Core\Dispatcher as Dispatcher;
-use Forest\Core\Request as Request;
+use Forest\Core\Registry as Registry;
 
 use Forest\Logger as Logger;
 
@@ -25,12 +24,6 @@ class Bootstrap
      * @var array
      */
     private $_options = array();
-    
-    /**
-     * Resources loaded
-     * @var array
-     */
-    private $_resources = array();
     
     /**
      * Total call duration (debug mode)
@@ -96,10 +89,8 @@ class Bootstrap
             }
         }
         
-        $this->_resources = array(
-            'mapping' => $mapping,
-            'queries' => $queries
-        );
+        Registry::set('mapping', $mapping);
+        Registry::set('queries', $queries);
     }
     
     /**

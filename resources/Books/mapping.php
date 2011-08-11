@@ -8,6 +8,8 @@
  */
 
 $mapping['get']['/books'] = array(
+    'resource' => 'Books',
+    'action'   => 'getBooks',
     'parameters' => array(
         'required' => array(
             'title' => 'string',
@@ -16,7 +18,6 @@ $mapping['get']['/books'] = array(
             'year' => 'integer'
         )
     ),
-    'action' => 'getBooks',
     'description' => 'List all books by specified filters'
 );
 ?>

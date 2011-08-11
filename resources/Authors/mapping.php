@@ -8,6 +8,8 @@
  */
 
 $mapping['get']['/authors'] = array(
+    'resource' => 'Authors',
+    'action'   => 'getAuthors',
     'parameters' => array(
         'required' => array(
             'name' => 'string',
@@ -16,7 +18,6 @@ $mapping['get']['/authors'] = array(
             'age' => 'integer'
         )
     ),
-    'action' => 'getAuthors',
     'description' => 'List all authors by specified filters'
 );
 ?>

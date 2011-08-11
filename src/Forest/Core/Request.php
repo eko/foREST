@@ -9,6 +9,8 @@
 
 namespace Forest\Core;
 
+use Forest\Core\Exception as Exception;
+
 /**
  * Request
  */
@@ -18,25 +20,31 @@ class Request
      * HTTP Method
      * @var string
      */
-    public $_method = null;
+    public $method = null;
     
     /**
      * HTTP Parameters
      * @var array
      */
-    public $_parameters = array();
+    public $parameters = array();
     
     /**
      * HTTP Protocol
      * @var string
      */
-    public $_protocol = null;
+    public $protocol = null;
     
     /**
      * HTTP URI
      * @var string
      */
-    public $_uri = null;
+    public $uri = null;
+    
+    /**
+     * Mapping route
+     * @var string
+     */
+    public $route = null;
     
     /**
      * Constructor
@@ -46,21 +54,40 @@ class Request
     }
     
     /**
-     * Return HTTP Method
+     * Get attribute
      * 
-     * @return string $_method
-     */
-    public function getMethod() {
-        return $this->_method;
-    }
-    
-    /**
-     * Return HTTP Parameters
+     * @param string $name
+     * @param array $arguments
      * 
-     * @return string $_parameters
+     * @return type mixed
      */
-    public function getParameters() {
-        return $this->_parameters;
+    public function __call($name, $arguments) {
+        $value = null;
+        
+        $action = strtolower(substr($name, 0, 3));
+        $method = strtolower(substr($name, 3));
+        
+        switch ($action) {
+            case 'get':
+                if (true === isset($this->{$method})) {
+                    $value = $this->{$method};
+                }
+                break;
+            
+            case 'set':
+                if (0 === count($arguments)) {
+                    $this->{$method} = $arguments[0];
+                } else {
+                    $this->{$method} = $arguments;
+                }
+                break;
+            
+            default:
+                throw new Exception(sprintf("Undefined method '%s' in class '%s'", $method, __CLASS__));
+                break;
+        }
+        
+        return $value;
     }
     
     /**
@@ -73,66 +100,50 @@ class Request
     public function getParameter($key) {
         $value = null;
         
-        if (true === isset($this->_parameters[$key])) {
-            $value = $this->_parameters[$key];
+        if (true === isset($this->parameters[$key])) {
+            $value = $this->parameters[$key];
         }
         
         return $value;
     }
     
     /**
-     * Return HTTP Protocol
-     * 
-     * @return string $_protocol
-     */
-    public function getProtocol() {
-        return $this->_protocol;
-    }
-    
-    /**
-     * Return HTTP Uri
-     * 
-     * @return string $_uri
-     */
-    public function getUri() {
-        return $this->_uri;
-    }
-    
-    /**
      * Analyze and collect request data
      */
     public function analyze() {
+        $this->uri = $_SERVER['REQUEST_URI'];
+        
         if (true === isset($_SERVER['REQUEST_METHOD'])) {
-            $this->_method = $_SERVER['REQUEST_METHOD'];
+            $this->method = $_SERVER['REQUEST_METHOD'];
         }
         
         if (true === isset($_SERVER['REQUEST_URI'])) {
-            $this->_uri = $_SERVER['REQUEST_URI'];
+            $this->uri = $_SERVER['REQUEST_URI'];
         }
         
         if (true === isset($_SERVER['SERVER_PROTOCOL'])) {
-            $this->_protocol = $_SERVER['SERVER_PROTOCOL'];
+            $this->protocol = $_SERVER['SERVER_PROTOCOL'];
         }
         
-        switch ($this->_method) {
+        switch ($this->method) {
             case 'DELETE':
-                $this->_parameters = null; //@todo
+                $this->parameters = null; //@todo
                 break;
             
             case 'GET':
-                $this->_parameters = $_GET;
+                $this->parameters = $_GET;
                 break;
             
             case 'HEADER':
-                $this->_parameters = null; //@todo
+                $this->parameters = null; //@todo
                 break;
             
             case 'POST':
-                $this->_parameters = $_POST;
+                $this->parameters = $_POST;
                 break;
             
             case 'PUT':
-                $this->_parameters = null; //@todo
+                $this->parameters = null; //@todo
                 break;
         }
     }
