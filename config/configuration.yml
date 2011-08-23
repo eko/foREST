@@ -1,0 +1,10 @@
+# foREST configuration
+
+all:
+  error.default: 404
+
+prod:
+  debug: false
+
+local:
+  debug: true
