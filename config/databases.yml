@@ -1,0 +1,7 @@
+# foREST databases configuration
+
+main:
+  base: forest
+  host: localhost
+  username: root
+  password: toor
