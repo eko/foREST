@@ -1,6 +1,0 @@
-[submodule "src/Forest/Yaml"]
-	path = src/Forest/Yaml
-	url = git://github.com/fabpot/yaml.git
-[submodule "src/Yaml"]
-	path = src/Yaml
-	url = git://github.com/fabpot/yaml.git
