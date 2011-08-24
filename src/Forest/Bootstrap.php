@@ -99,11 +99,7 @@ class Bootstrap
      * Load resources (mapping, queries) from /resources folder
      */
     private function loadResources() {
-        $directory = realpath(__DIR__
-                    . str_repeat(DIRECTORY_SEPARATOR . '..', 2)
-                    . DIRECTORY_SEPARATOR . 'resources'
-        );
-        
+        $directory = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2) . DIRECTORY_SEPARATOR . 'resources');
         $resources = $this->readDirectory($directory);
         
         foreach ($resources as $resource) {
