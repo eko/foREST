@@ -67,7 +67,7 @@ class Bootstrap
      * @param string $class
      */
     public function autoload($class) {
-        $basedir = realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..');
+        $basedir = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..');
         
         $classfile = $basedir . DIRECTORY_SEPARATOR . str_replace(array('_', '\\'), '/', $class) . '.php';
         
@@ -84,7 +84,7 @@ class Bootstrap
             throw new Exception("Yaml component isn't loaded. You need to specify it on Bootstrap constructor");
         }
         
-        $basedir = realpath(dirname(__FILE__) . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
+        $basedir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
         $config = $basedir . DIRECTORY_SEPARATOR . 'config/configuration.yml';
         
         if (false === file_exists($config)) {
@@ -99,7 +99,7 @@ class Bootstrap
      * Load resources (mapping, queries) from /resources folder
      */
     private function loadResources() {
-        $directory = realpath(dirname(__FILE__)
+        $directory = realpath(__DIR__
                     . str_repeat(DIRECTORY_SEPARATOR . '..', 2)
                     . DIRECTORY_SEPARATOR . 'resources'
         );
