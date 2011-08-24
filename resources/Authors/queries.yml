@@ -1,0 +1,9 @@
+## Authors queries
+
+"authors.list":
+  database: main
+  query: >
+         SELECT *
+         FROM authors
+         WHERE name = ':name:'
+         {AND age = :age:}

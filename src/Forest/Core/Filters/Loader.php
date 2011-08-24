@@ -49,15 +49,15 @@ class Loader
         
         $method = strtolower($method);
         
-        if (true === is_array($mapping) && true === isset($mapping[$method])) {
+        if (true === is_array($mapping)) {
             $max = 0;
             
-            foreach ($mapping[$method] as $route => $data) {
-                $probability = similar_text($uri, $route);
+            foreach ($mapping as $route => $data) {
+                $probability = similar_text($method . ':/' . $uri, $route);
                 
                 if ($probability > $max) {
                     $max = $probability;
-                    $resource = $mapping[$method][$route];
+                    $resource = $mapping[$route];
                 }
             }
         }

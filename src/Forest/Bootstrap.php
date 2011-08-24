@@ -80,10 +80,6 @@ class Bootstrap
      * Load configuration
      */
     private function loadConfiguration() {
-        if (false === array_key_exists('Yaml', $this->_components)) {
-            throw new Exception("Yaml component isn't loaded. You need to specify it on Bootstrap constructor");
-        }
-        
         $basedir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
         $config = $basedir . DIRECTORY_SEPARATOR . 'config/configuration.yml';
         
@@ -91,14 +87,17 @@ class Bootstrap
             throw new Exception(sprintf('Configuration file does not exists at location: %s', $config));
         }
         
-        $yaml = new $this->_components['Yaml']();
-        $this->_options = $yaml->parse(file_get_contents($config));
+        $content = file_get_contents($config);
+        $this->_options = \Symfony\Component\Yaml\Yaml::parse($content);
     }
     
     /**
      * Load resources (mapping, queries) from /resources folder
      */
     private function loadResources() {
+        $mapping = array();
+        $queries = array();
+        
         $directory = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2) . DIRECTORY_SEPARATOR . 'resources');
         $resources = $this->readDirectory($directory);
         
@@ -107,8 +106,28 @@ class Bootstrap
             $resourceFiles = $this->readDirectory($resourcePath);
             
             foreach ($resourceFiles as $file) {
-                $file = $resourcePath . DIRECTORY_SEPARATOR . $file;
-                include_once $file;
+                $file = new \SplFileInfo($resourcePath . DIRECTORY_SEPARATOR . $file);
+                
+                if ('yml' === $file->getExtension()) {
+                    $filecontent = file_get_contents($file);
+                    $content = \Symfony\Component\Yaml\Yaml::parse($filecontent);
+                    
+                    $filename = $file->getBasename('.yml');
+                    
+                    switch ($filename) {
+                        case 'mapping':
+                            $mapping = array_merge($mapping, $content);
+                            break;
+                        
+                        case 'queries':
+                            $queries = array_merge($queries, $content);
+                            break;
+                        
+                        default:
+                            throw new Exception(sprintf("Loading resources: undefined element: '%s'", $key));
+                            break;
+                    }
+                }
             }
         }
         
@@ -142,7 +161,7 @@ class Bootstrap
     /**
      * Return total call duration
      * 
-     * @throws Forest\Core\Exception
+     * @throws \Forest\Core\Exception
      * 
      * @return float $_duration
      */

@@ -1,0 +1,9 @@
+## Books queries
+
+"books.list":
+  database: main
+  query: >
+         SELECT *
+         FROM books
+         WHERE title = ':title:'
+         {AND year = :year:}"

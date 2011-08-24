@@ -1,0 +1,11 @@
+## Books mapping
+
+"get:/books":
+  description: "List all books by specified filters"
+  resource: Books
+  action: getBooks
+  parameters:
+    required:
+      title: string
+    optionals:
+      year: integer
