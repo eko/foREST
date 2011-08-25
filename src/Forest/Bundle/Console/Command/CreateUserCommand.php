@@ -15,13 +15,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Database tool allows you to easily drop and create your configured databases.
- *
- * @author Fabien Potencier <fabien@symfony.com>
- * @author Jonathan H. Wage <jonwage@gmail.com>
+ * CreateUserCommand
  */
 class CreateUserCommand extends Command
 {
+    /**
+     * Configure command
+     */
     protected function configure()
     {
         $this
@@ -39,6 +39,12 @@ EOT
         );
     }
 
+    /**
+     * Execute command
+     * 
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         //@todo: Add code...
