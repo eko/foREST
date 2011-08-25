@@ -5,7 +5,7 @@ require_once __DIR__ . '/src/Forest/Bootstrap.php';
 
 $forest = new Forest\Bootstrap();
 
-use Symfony\Component\Console\Application;
+use Forest\Bundle\Console\Application;
 
 $application = new Application(
     $forest->getKernel()->getName(),

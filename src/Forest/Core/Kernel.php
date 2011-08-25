@@ -41,6 +41,13 @@ class Kernel
     );
     
     /**
+     * Application environment
+     * 
+     * @var string
+     */
+    private $environment = null;
+    
+    /**
      * Request object
      * @var Request
      */
@@ -54,10 +61,14 @@ class Kernel
     
     /**
      * Constructor
+     * 
+     * @param string $environment
      */
-    public function __construct() {
+    public function __construct($environment = null) {
         $this->request = new Request();
         $this->response = new Response();
+        
+        $this->environment = $environment;
     }
     
     /**
@@ -72,6 +83,15 @@ class Kernel
                 throw new Exception(sprintf("Filter class '%s' or method 'filter' does not exists.", $class));
             }
         }
+    }
+    
+    /**
+     * Return application environment
+     * 
+     * @return string
+     */
+    public function getEnvironment() {
+        return $this->environment;
     }
     
     /**

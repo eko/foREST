@@ -11,12 +11,7 @@ require_once 'src/Forest/Bootstrap.php';
 
 define('APPLICATION_ENV', 'local');
 
-// Bootstrap application and components
-$forest = new Forest\Bootstrap(
-    array(
-        'Yaml' => 'Symfony\Component\Yaml\Yaml'
-    )
-);
+$forest = new Forest\Bootstrap(APPLICATION_ENV);
 
 echo $forest->getDuration();
 ?>

@@ -35,19 +35,17 @@ class Bootstrap
     /**
      * Constructor
      * 
-     * @param string $env
+     * @param string $environment
      */
-    public function __construct($env = null) {
+    public function __construct($environment = null) {
         $start = microtime(true);
-        
-        $this->components = $components;
         
         spl_autoload_register(__CLASS__ .'::autoload');
         
         $this->loadConfiguration();
         $this->loadResources();
         
-        $this->kernel = new Kernel();
+        $this->kernel = new Kernel($environment);
         $this->kernel->run();
         
         $end = microtime(true);
