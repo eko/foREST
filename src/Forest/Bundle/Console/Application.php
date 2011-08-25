@@ -21,8 +21,6 @@ class Application extends \Symfony\Component\Console\Application
      * 
      * @param string $name
      * @param string $version
-     * 
-     * @return \Forest\Bundle\Console\Application
      */
     public function __construct($name = 'UNKNOWN', $version = 'UNKNOWN') {
         parent::__construct($name, $version);
