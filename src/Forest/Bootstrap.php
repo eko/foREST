@@ -21,6 +21,16 @@ use Forest\Logger as Logger;
 class Bootstrap
 {
     /**
+     * Application name
+     */
+    const NAME = 'foREST - Restful API';
+
+    /**
+     * Application version
+     */
+    const VERSION = 1.0;
+
+    /**
      * Components loaded
      * @var array
      */
@@ -156,6 +166,24 @@ class Bootstrap
         closedir($handle);
         
         return $items;
+    }
+    
+    /**
+     * Return application name
+     * 
+     * @return string
+     */
+    public function getName() {
+        return self::NAME;
+    }
+    
+    /**
+     * Return application version
+     * 
+     * @return float
+     */
+    public function getVersion() {
+        return self::VERSION;
     }
     
     /**
