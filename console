@@ -7,5 +7,9 @@ $forest = new Forest\Bootstrap();
 
 use Symfony\Component\Console\Application;
 
-$application = new Application($forest->getName(), $forest->getVersion());
+$application = new Application(
+    $forest->getKernel()->getName(),
+    $forest->getKernel()->getVersion()
+);
+
 $application->run();

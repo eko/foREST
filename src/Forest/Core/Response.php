@@ -18,7 +18,7 @@ class Response
      * Response data
      * @var array
      */
-    public $_data = array();
+    public $data = array();
     
     /**
      * Return data
@@ -26,7 +26,7 @@ class Response
      * @return array $_data
      */
     public function getData() {
-        return $this->_data;
+        return $this->data;
     }
     
     /**
@@ -37,6 +37,6 @@ class Response
      * @return array $_data
      */
     public function setData($data) {
-        $this->_data = $data;
+        $this->data = $data;
     }
 }

@@ -111,7 +111,9 @@ class Request
      * Analyze and collect request data
      */
     public function analyze() {
-        $this->uri = $_SERVER['REQUEST_URI'];
+        if (true === isset($this->uri)) {
+            $this->uri = $_SERVER['REQUEST_URI'];
+        }
         
         if (true === isset($_SERVER['REQUEST_METHOD'])) {
             $this->method = $_SERVER['REQUEST_METHOD'];

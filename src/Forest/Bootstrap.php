@@ -9,7 +9,7 @@
 
 namespace Forest;
 
-use Forest\Core\Dispatcher as Dispatcher;
+use Forest\Core\Kernel as Kernel;
 use Forest\Core\Exception as Exception;
 use Forest\Core\Registry as Registry;
 
@@ -21,54 +21,38 @@ use Forest\Logger as Logger;
 class Bootstrap
 {
     /**
-     * Application name
-     */
-    const NAME = 'foREST - Restful API';
-
-    /**
-     * Application version
-     */
-    const VERSION = 1.0;
-
-    /**
-     * Components loaded
-     * @var array
-     */
-    private $_components = array();
-    
-    /**
      * Options availables
      * @var array
      */
-    private $_options = array();
+    private $options = array();
     
     /**
      * Total call duration (debug mode)
      * @var float
      */
-    private $_duration = null;
+    private $duration = null;
     
     /**
      * Constructor
      * 
-     * @param array $components
+     * @param string $env
      */
-    public function __construct($components = array()) {
+    public function __construct($env = null) {
         $start = microtime(true);
         
-        $this->_components = $components;
+        $this->components = $components;
         
         spl_autoload_register(__CLASS__ .'::autoload');
         
         $this->loadConfiguration();
         $this->loadResources();
         
-        $dispatcher = new Dispatcher();
-        $dispatcher->dispatch();
+        $this->kernel = new Kernel();
+        $this->kernel->run();
         
         $end = microtime(true);
         
-        $this->_duration = ($end - $start);
+        $this->duration = ($end - $start);
     }
     
     /**
@@ -98,7 +82,7 @@ class Bootstrap
         }
         
         $content = file_get_contents($config);
-        $this->_options = \Symfony\Component\Yaml\Yaml::parse($content);
+        $this->options = \Symfony\Component\Yaml\Yaml::parse($content);
     }
     
     /**
@@ -169,21 +153,12 @@ class Bootstrap
     }
     
     /**
-     * Return application name
+     * Return Kernel class
      * 
-     * @return string
+     * @return \Forest\Core\Kernel
      */
-    public function getName() {
-        return self::NAME;
-    }
-    
-    /**
-     * Return application version
-     * 
-     * @return float
-     */
-    public function getVersion() {
-        return self::VERSION;
+    public function getKernel() {
+        return $this->kernel;
     }
     
     /**
@@ -194,6 +169,6 @@ class Bootstrap
      * @return float $_duration
      */
     public function getDuration() {
-        return (number_format($this->_duration, 5) . 'ms');
+        return (number_format($this->duration, 5) . 'ms');
     }
 }

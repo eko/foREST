@@ -27,13 +27,13 @@ class Logger extends Abstraction {
      * Logs file path
      * @var string
      */
-    private $_path = 'logs';
+    private $path = 'logs';
     
     /**
      * Debug filename
      * @var string
      */
-    private $_filename = 'debug.log';
+    private $filename = 'debug.log';
     
     /**
      * Constructor
@@ -47,7 +47,7 @@ class Logger extends Abstraction {
         }
         
         if (null !== $filename) {
-            $this->_filename = $filename;
+            $this->filename = $filename;
         }
     }
     
@@ -57,7 +57,7 @@ class Logger extends Abstraction {
      * @return string
      */
     public function getFilepath() {
-        return realpath($this->_path) . DIRECTORY_SEPARATOR . $this->_filename;
+        return realpath($this->path) . DIRECTORY_SEPARATOR . $this->filename;
     }
     
     /**
