@@ -6,11 +6,6 @@ require_once __DIR__ . '/src/Forest/Bootstrap.php';
 $forest = new Forest\Bootstrap();
 
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\ArgvInput;
-
-$input = new ArgvInput();
-$env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
-$debug = !$input->hasParameterOption(array('--no-debug', ''));
 
 $application = new Application($forest->getName(), $forest->getVersion());
 $application->run();
