@@ -25,4 +25,3 @@ class Resource extends Abstraction {
         return array();
     }
 }
-?>

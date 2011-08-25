@@ -26,4 +26,3 @@ class Books extends Resource {
         return array('books' => array('book1', 'book2'));
     }
 }
-?>

@@ -33,4 +33,3 @@ class Abstraction {
         return self::$_instance;
     }
 }
-?>

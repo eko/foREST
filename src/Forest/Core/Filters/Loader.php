@@ -69,4 +69,3 @@ class Loader
         return $resource;
     }
 }
-?>

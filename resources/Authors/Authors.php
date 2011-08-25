@@ -26,4 +26,3 @@ class Authors extends Resource {
         return array('authors' => array('author1', 'author2'));
     }
 }
-?>

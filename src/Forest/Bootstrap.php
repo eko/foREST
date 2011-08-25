@@ -197,4 +197,3 @@ class Bootstrap
         return (number_format($this->_duration, 5) . 'ms');
     }
 }
-?>

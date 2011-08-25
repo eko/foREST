@@ -49,4 +49,3 @@ class Registry {
         return $value;
     }
 }
-?>

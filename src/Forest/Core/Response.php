@@ -40,4 +40,3 @@ class Response
         $this->_data = $data;
     }
 }
-?>

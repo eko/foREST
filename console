@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-require_once __DIR__.'/src/Forest/Bootstrap.php';
+require_once __DIR__ . '/src/Forest/Bootstrap.php';
 
 $forest = new Forest\Bootstrap();
 

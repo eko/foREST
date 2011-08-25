@@ -27,4 +27,3 @@ class Exception extends \Exception {
         throw new \Exception($message, $code, $previous);
     }
 }
-?>

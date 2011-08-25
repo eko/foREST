@@ -83,4 +83,3 @@ class Logger extends Abstraction {
         fclose($file);
     }
 }
-?>
