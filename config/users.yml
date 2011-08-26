@@ -1,4 +1,4 @@
 # Users list
 
-admin: { password: admin, role: users }
+admin: { password: admin, role: admin }
 test: { password: test, role: none }

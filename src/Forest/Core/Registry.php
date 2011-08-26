@@ -42,7 +42,7 @@ class Registry {
      * @return mixed $value
      */
     public static function get($key, $value = null) {
-        if (true === isset(self::$_registry[$key])) {
+        if (isset(self::$_registry[$key])) {
             $value = self::$_registry[$key];
         }
         

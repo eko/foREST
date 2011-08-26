@@ -69,7 +69,7 @@ class Request
         
         switch ($action) {
             case 'get':
-                if (true === isset($this->{$method})) {
+                if (isset($this->{$method})) {
                     $value = $this->{$method};
                 }
                 break;
@@ -100,7 +100,7 @@ class Request
     public function getParameter($key) {
         $value = null;
         
-        if (true === isset($this->parameters[$key])) {
+        if (isset($this->parameters[$key])) {
             $value = $this->parameters[$key];
         }
         
@@ -111,19 +111,19 @@ class Request
      * Analyze and collect request data
      */
     public function analyze() {
-        if (true === isset($this->uri)) {
+        if (isset($this->uri)) {
             $this->uri = $_SERVER['REQUEST_URI'];
         }
         
-        if (true === isset($_SERVER['REQUEST_METHOD'])) {
+        if (isset($_SERVER['REQUEST_METHOD'])) {
             $this->method = $_SERVER['REQUEST_METHOD'];
         }
         
-        if (true === isset($_SERVER['REQUEST_URI'])) {
+        if (isset($_SERVER['REQUEST_URI'])) {
             $this->uri = $_SERVER['REQUEST_URI'];
         }
         
-        if (true === isset($_SERVER['SERVER_PROTOCOL'])) {
+        if (isset($_SERVER['SERVER_PROTOCOL'])) {
             $this->protocol = $_SERVER['SERVER_PROTOCOL'];
         }
         
