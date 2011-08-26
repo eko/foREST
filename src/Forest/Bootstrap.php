@@ -9,22 +9,17 @@
 
 namespace Forest;
 
-use Forest\Core\Kernel as Kernel;
+use Forest\Core\Kernel;
 use Forest\Core\Exception as Exception;
-use Forest\Core\Registry as Registry;
+use Forest\Core\Registry;
 
-use Forest\Logger as Logger;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Bootstrap
  */
 class Bootstrap
 {
-    /**
-     * Options availables
-     * @var array
-     */
-    private $options = array();
     
     /**
      * Total call duration (debug mode)
@@ -80,7 +75,9 @@ class Bootstrap
         }
         
         $content = file_get_contents($config);
-        $this->options = \Symfony\Component\Yaml\Yaml::parse($content);
+        $config = Yaml::parse($content);
+        
+        Registry::set('config', $config);
     }
     
     /**
@@ -102,7 +99,7 @@ class Bootstrap
                 
                 if ('yml' === $file->getExtension()) {
                     $filecontent = file_get_contents($file);
-                    $content = \Symfony\Component\Yaml\Yaml::parse($filecontent);
+                    $content = Yaml::parse($filecontent);
                     
                     $filename = $file->getBasename('.yml');
                     

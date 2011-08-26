@@ -1,4 +1,4 @@
-# foREST configuration
+# Configuration
 
 all:
   error.default: 404

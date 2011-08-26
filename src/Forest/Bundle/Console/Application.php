@@ -9,7 +9,9 @@
 
 namespace Forest\Bundle\Console;
 
-use Forest\Bundle\Console\Command\CreateUserCommand;
+use Forest\Bundle\Console\Command\UserAddCommand;
+use Forest\Bundle\Console\Command\UserDelCommand;
+use Forest\Bundle\Console\Command\UserRefreshCommand;
 
 /**
  * Application
@@ -26,7 +28,9 @@ class Application extends \Symfony\Component\Console\Application
         parent::__construct($name, $version);
         
         $this->addCommands(array(
-            new CreateUserCommand()
+            new UserAddCommand(),
+            new UserDelCommand(),
+            new UserRefreshCommand(),
         ));
     }
 }
