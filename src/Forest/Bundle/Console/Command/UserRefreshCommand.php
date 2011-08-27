@@ -14,6 +14,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use Symfony\Component\Yaml\Yaml;
+
 /**
  * UserRefreshCommand
  */
@@ -41,10 +43,24 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //@todo: Add code...
+        $filename = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 5) . '/config/users.yml');
+        
+        $users = Yaml::parse($filename);
+        
+        $htpasswd = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 5) . '/www/.htpasswd');
+        
+        $file = fopen($htpasswd, 'w+');
+        
+        foreach ($users as $user => $data) {
+            $password = crypt(trim($data['password']), base64_encode(CRYPT_STD_DES));
+            
+            fwrite($file, $user . ':' . $password . "\r\n");
+        }
+        
+        fclose($file);
         
         try {
-            $output->writeln(sprintf('<info>Users are now successfully refreshed</info>', $username));
+            $output->writeln('<info>Users are now refreshed into .htpasswd file</info>');
         } catch (\Exception $e) {
             $output->writeln('<error>Could not refresh users</error>');
             $output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
