@@ -75,7 +75,7 @@ class Request
                 break;
             
             case 'set':
-                if (0 === count($arguments)) {
+                if (1 === count($arguments)) {
                     $this->{$method} = $arguments[0];
                 } else {
                     $this->{$method} = $arguments;

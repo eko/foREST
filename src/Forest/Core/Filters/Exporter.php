@@ -18,6 +18,6 @@ use Forest\Core\Response as Response;
 class Exporter
 {
     public static function filter(Request &$request, Response &$response) {
-        
+        print_r($response->getData());
     }
 }

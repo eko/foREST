@@ -15,3 +15,14 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php [L,QSA]
+<<<<<<< HEAD
+=======
+
+# Authentication
+
+AuthType Basic
+AuthGroupFile /dev/null
+AuthName "Restricted Access"
+AuthUserFile /var/www/foREST/www/.htpasswd
+Require valid-user
+>>>>>>> b9470662dda159565a1fd8b6ad3976b6a3a610e7

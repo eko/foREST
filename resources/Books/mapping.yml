@@ -2,7 +2,7 @@
 
 "get:/books":
   description: "List all books by specified filters"
-  resource: Books
+  resource: \Forest\Resources\Books
   action: getBooks
   parameters:
     required:

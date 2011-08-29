@@ -2,7 +2,7 @@
 
 "get:/authors":
   description: "List all authors by specified filters"
-  resource: Authors
+  resource: \Forest\Resources\Authors
   action: getAuthors
   parameters:
     required:
