@@ -19,10 +19,12 @@ class Resource
 {
     public static function filter(Request &$request, Response &$response) {
         $route = $request->getRoute();
-        $resource = $route['resource'];
+        
+        $resource = $route->getResource();
+        $action = $route->getAction();
         
         $class = new $resource;
-        $result = $class->$route['action']($request);
+        $result = $class->{$action}($request);
 
         $response->setData($result);
     }

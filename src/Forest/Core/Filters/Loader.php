@@ -30,7 +30,7 @@ class Loader
         $method = $request->getMethod();
         $uri = $request->getUri();
         
-        $route = $this->getRoute($method, $uri);
+        $route = $this->findRoute($method, $uri);
         $request->setRoute($route);
     }
     
@@ -42,30 +42,30 @@ class Loader
      * 
      * @return array $resource
      */
-    private function getRoute($method, $uri) {
-        $resource = null;
+    private function findRoute($method, $uri) {
+        $route = null;
         
-        $mapping = Registry::get('mapping');
+        $routing = Registry::get('routing');
         
         $method = strtolower($method);
         
-        if (true === is_array($mapping)) {
+        if (true === is_array($routing)) {
             $max = 0;
             
-            foreach ($mapping as $route => $data) {
-                $probability = similar_text($method . ':/' . $uri, $route);
+            foreach ($routing as $name => $data) {
+                $probability = similar_text($method . ':/' . $uri, $name);
                 
                 if ($probability > $max) {
                     $max = $probability;
-                    $resource = $mapping[$route];
+                    $route = $routing[$name];
                 }
             }
         }
         
-        if (null === $resource) {
+        if (null === $route) {
             throw new Exception(sprintf("Route '%s' not found.", $uri));
         }
         
-        return $resource;
+        return $route;
     }
 }

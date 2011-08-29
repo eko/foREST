@@ -11,7 +11,9 @@ namespace Forest;
 
 use Forest\Core\Kernel;
 use Forest\Core\Exception as Exception;
+use Forest\Core\Query;
 use Forest\Core\Registry;
+use Forest\Core\Route;
 
 use Symfony\Component\Yaml\Yaml;
 
@@ -81,10 +83,10 @@ class Bootstrap
     }
     
     /**
-     * Load resources (mapping, queries) from /resources folder
+     * Load resources (routing, queries) from /resources folder
      */
     private function loadResources() {
-        $mapping = array();
+        $routing = array();
         $queries = array();
         
         $directory = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2) . DIRECTORY_SEPARATOR . 'resources');
@@ -104,16 +106,20 @@ class Bootstrap
                     $filename = $file->getBasename('.yml');
                     
                     switch ($filename) {
-                        case 'mapping':
-                            $mapping = array_merge($mapping, $content);
+                        case 'routing':
+                            $name = key($content);
+                            $route = array($name => new Route($name, $content));
+                            $routing = array_merge($routing, $route);
                             break;
                         
                         case 'queries':
-                            $queries = array_merge($queries, $content);
+                            $name = key($content);
+                            $query = array($name => new Query($name, $content));
+                            $queries = array_merge($queries, $query);
                             break;
                         
                         default:
-                            throw new Exception(sprintf("Loading resources: undefined element: '%s'", $key));
+                            throw new Exception(sprintf("Loading resources: undefined element: '%s'", $filename));
                             break;
                     }
                 } else {
@@ -122,7 +128,7 @@ class Bootstrap
             }
         }
         
-        Registry::set('mapping', $mapping);
+        Registry::set('routing', $routing);
         Registry::set('queries', $queries);
     }
     

@@ -54,7 +54,7 @@ class Request
     }
     
     /**
-     * Get attribute
+     * Magic __call method for getter and setters
      * 
      * @param string $name
      * @param array $arguments
@@ -83,7 +83,11 @@ class Request
                 break;
             
             default:
-                throw new Exception(sprintf("Undefined method '%s' in class '%s'", $method, __CLASS__));
+                if (method_exists($this, $name)) {
+                    return call_user_method($name, $this, $arguments);
+                } else {
+                    throw new Exception(sprintf("Undefined method '%s' in class '%s'", $method, __CLASS__));
+                }
                 break;
         }
         

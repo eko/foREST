@@ -1,0 +1,11 @@
+## Authors mapping
+
+"get:/authors":
+  description: "List all authors by specified filters"
+  resource: \Forest\Resources\Authors
+  action: getAuthors
+  parameters:
+    required:
+      name: string
+    optionals:
+      age: integer
