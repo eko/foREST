@@ -116,6 +116,8 @@ class Bootstrap
                             throw new Exception(sprintf("Loading resources: undefined element: '%s'", $key));
                             break;
                     }
+                } else {
+                    include $resourcePath . DIRECTORY_SEPARATOR . $file->getBasename();
                 }
             }
         }

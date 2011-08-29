@@ -14,5 +14,5 @@ RewriteRule ^(.*)$ index.php [L,QSA]
 AuthType Basic
 AuthGroupFile /dev/null
 AuthName "Restricted Access"
-AuthUserFile /var/www/forest/www/.htpasswd
+AuthUserFile /var/www/foREST/www/.htpasswd
 Require valid-user

@@ -9,6 +9,7 @@
 
 namespace Forest\Resources;
 
+use Forest\Core\Request;
 use Forest\Core\Resource as Resource;
 
 /**

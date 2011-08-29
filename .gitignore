@@ -1,5 +1,7 @@
 # files/folders ignored
 .gitignore
+.htaccess
+.htpasswd
 nbproject
 BALSAMIQ
 debug.log

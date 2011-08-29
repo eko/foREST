@@ -18,6 +18,12 @@ use Forest\Core\Response as Response;
 class Resource
 {
     public static function filter(Request &$request, Response &$response) {
+        $route = $request->getRoute();
+        $resource = $route['resource'];
         
+        $class = new $resource;
+        $result = $class->$route['action']($request);
+
+        $response->setData($result);
     }
 }
