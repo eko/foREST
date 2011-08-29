@@ -1,3 +1,10 @@
+# Authentication
+AuthType Basic
+AuthGroupFile /dev/null
+AuthName "Restricted Access"
+AuthUserFile .htpasswd
+Require valid-user
+
 # Rewrite
 Options +FollowSymlinks
 
@@ -8,11 +15,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php [L,QSA]
-
-# Authentication
-
-AuthType Basic
-AuthGroupFile /dev/null
-AuthName "Restricted Access"
-AuthUserFile /var/www/forest/www/.htpasswd
-Require valid-user
