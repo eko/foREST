@@ -50,14 +50,23 @@ class Loader
         $method = strtolower($method);
         
         if (true === is_array($routing)) {
-            $max = 0;
-            
-            foreach ($routing as $name => $data) {
-                $probability = similar_text($method . ':/' . $uri, $name);
+            foreach ($routing as $name => $currentRoute) {
+                $name = explode(':/', $name);
+                $name = '/' . $name[1];
                 
-                if ($probability > $max) {
-                    $max = $probability;
-                    $route = $routing[$name];
+                $routeElements = explode('/', $name);
+                $uriElements = explode('/', $uri);
+                
+                if (count($uriElements) === count($routeElements)) {
+                    foreach ($routeElements as $key => $element) {
+                        if (':' === substr($element, 0, 1)) {
+                            $name = preg_replace("/{$element}/", $uriElements[$key], $name);
+                        }
+                    }
+                }
+                
+                if ($uri === $name) {
+                    $route = $currentRoute;
                 }
             }
         }

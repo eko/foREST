@@ -10,7 +10,7 @@
 namespace Forest\Resources;
 
 use Forest\Core\Request;
-use Forest\Core\Resource as Resource;
+use Forest\Core\Resource;
 
 /**
  * Authors

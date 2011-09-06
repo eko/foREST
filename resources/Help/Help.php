@@ -9,21 +9,22 @@
 
 namespace Forest\Resources;
 
+use Forest\Core\Registry;
 use Forest\Core\Request;
 use Forest\Core\Resource;
 
 /**
- * Books
+ * Help
  */
-class Books extends Resource {
+class Help extends Resource {
     /**
-     * List all books
+     * Display help
      * 
      * @param Request $request
      * 
      * @return array
      */
-    public function getBooks(Request $request) {
-        return array('books' => array('book1', 'book2'));
+    public function help(Request $request) {
+        return Registry::get('routing');
     }
 }

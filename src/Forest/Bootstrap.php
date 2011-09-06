@@ -107,15 +107,31 @@ class Bootstrap
                     
                     switch ($filename) {
                         case 'routing':
-                            $name = key($content);
-                            $route = array($name => new Route($name, $content));
-                            $routing = array_merge($routing, $route);
+                            if (1 === count($content)) {
+                                $name = key($content);
+
+                                $route = array($name => new Route($name, $content));
+                                $routing = array_merge($routing, $route);
+                            } else {
+                                foreach ($content as $key => $element) {
+                                    $route = array($key => new Route($key, array($key => $element)));
+                                    $routing = array_merge($routing, $route);
+                                }
+                            }
                             break;
                         
                         case 'queries':
-                            $name = key($content);
-                            $query = array($name => new Query($name, $content));
-                            $queries = array_merge($queries, $query);
+                            if (1 === count($content)) {
+                                $name = key($content);
+                                
+                                $query = array($name => new Query($name, $content));
+                                $queries = array_merge($queries, $query);
+                            } else {
+                                foreach ($content as $key => $element) {
+                                    $query = array($key => new Query($key, $element));
+                                    $queries = array_merge($queries, $query);
+                                }
+                            }
                             break;
                         
                         default:

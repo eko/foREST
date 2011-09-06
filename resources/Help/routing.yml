@@ -1,0 +1,11 @@
+## Help mapping
+
+"get:/":
+  description: "Display help"
+  resource: \Forest\Resources\Help
+  action: help
+  
+"get:/help/:resource":
+  description: "Display help"
+  resource: \Forest\Resources\Help
+  action: help
