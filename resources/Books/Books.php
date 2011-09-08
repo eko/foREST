@@ -9,8 +9,8 @@
 
 namespace Forest\Resources;
 
-use Forest\Core\Request;
-use Forest\Core\Resource;
+use Forest\Core\Request,
+    Forest\Core\Resource;
 
 /**
  * Books

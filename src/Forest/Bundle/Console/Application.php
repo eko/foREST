@@ -9,9 +9,9 @@
 
 namespace Forest\Bundle\Console;
 
-use Forest\Bundle\Console\Command\UserAddCommand;
-use Forest\Bundle\Console\Command\UserDelCommand;
-use Forest\Bundle\Console\Command\UserRefreshCommand;
+use Forest\Bundle\Console\Command\UserAddCommand,
+    Forest\Bundle\Console\Command\UserDelCommand,
+    Forest\Bundle\Console\Command\UserRefreshCommand;
 
 /**
  * Application

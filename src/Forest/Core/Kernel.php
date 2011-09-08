@@ -9,9 +9,9 @@
 
 namespace Forest\Core;
 
-use Forest\Core\Exception as Exception;
-use Forest\Core\Response as Response;
-use Forest\Core\Request as Request;
+use Forest\Core\Exception as Exception,
+    Forest\Core\Response,
+    Forest\Core\Request;
 
 /**
  * Kernel

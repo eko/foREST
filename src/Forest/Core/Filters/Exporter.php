@@ -9,15 +9,15 @@
 
 namespace Forest\Core\Filters;
 
-use Forest\Core\Request as Request;
-use Forest\Core\Response as Response;
+use Forest\Core\Request,
+    Forest\Core\Response;
 
 /**
  * Exporter
  */
 class Exporter
 {
-    public static function filter(Request &$request, Response &$response) {
+    public function filter(Request &$request, Response &$response) {
         print_r($response->getData());
     }
 }

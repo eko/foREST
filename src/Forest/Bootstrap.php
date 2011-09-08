@@ -9,13 +9,12 @@
 
 namespace Forest;
 
-use Forest\Core\Kernel;
-use Forest\Core\Exception as Exception;
-use Forest\Core\Query;
-use Forest\Core\Registry;
-use Forest\Core\Route;
-
-use Symfony\Component\Yaml\Yaml;
+use Forest\Core\Kernel,
+    Forest\Core\Exception as Exception,
+    Forest\Core\Query,
+    Forest\Core\Registry,
+    Forest\Core\Route,
+    Symfony\Component\Yaml\Yaml;
 
 /**
  * Bootstrap

@@ -9,9 +9,9 @@
 
 namespace Forest\Resources;
 
-use Forest\Core\Registry;
-use Forest\Core\Request;
-use Forest\Core\Resource;
+use Forest\Core\Registry,
+    Forest\Core\Request,
+    Forest\Core\Resource;
 
 /**
  * Help

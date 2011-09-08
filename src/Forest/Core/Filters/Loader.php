@@ -9,11 +9,10 @@
 
 namespace Forest\Core\Filters;
 
-use Forest\Core\Exception as Exception;
-use Forest\Core\Registry as Registry;
-
-use Forest\Core\Request as Request;
-use Forest\Core\Response as Response;
+use Forest\Core\Exception as Exception,
+    Forest\Core\Registry,
+    Forest\Core\Request,
+    Forest\Core\Response;
 
 /**
  * Loader

@@ -9,15 +9,56 @@
 
 namespace Forest\Core\Filters;
 
-use Forest\Core\Request as Request;
-use Forest\Core\Response as Response;
+use Forest\Core\Request,
+    Forest\Core\Response;
 
 /**
  * Validator
  */
 class Validator
 {
-    public static function filter(Request &$request, Response &$response) {
+    public function filter(Request &$request, Response &$response) {
+        $route = $request->getRoute();
         
+        $routeParameters = $route->getParameters();
+        $requestParameters = $request->getParameters();
+        
+        if (isset($routeParameters['required'])) {
+            foreach ($routeParameters['required'] as $name => $value) {
+                if (true === isset($requestParameters[$name])) {
+                    $value = $requestParameters[$name];
+                    
+                    $correct = $this->validate($type, $value);
+                } else {
+                    //@todo: $response->renderError(406, sprintf("Parameter '%s' is required."));
+                }
+            }
+        }
+    }
+    
+    /**
+     * Return if value has a correct type
+     * 
+     * @param string $type
+     * @param mixed $value
+     * 
+     * @return boolean $correct
+     */
+    private function validate($type, $value) {
+        $correct = false;
+        
+        switch ($type) {
+            case 'string':
+                if (empty($value)) {
+                    $correct = false;
+                }
+                break;
+            
+            default:
+                $correct = false;
+                break;
+        }
+        
+        return $correct;
     }
 }
