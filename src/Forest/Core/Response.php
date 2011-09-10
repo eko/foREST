@@ -9,6 +9,8 @@
 
 namespace Forest\Core;
 
+use Forest\Core\Exception;
+
 /**
  * Response
  */
@@ -38,5 +40,29 @@ class Response
      */
     public function setData($data) {
         $this->data = $data;
+    }
+    
+    /**
+     * Set response header
+     * 
+     * @param string $protocol
+     * @param int $code
+     * @param string $message
+     */
+    public function setHeader($protocol, $code, $message) {
+        header($protocol . ' ' . $code . ' ' . $message);
+    }
+    
+    /**
+     * Render error message
+     * 
+     * @param int $code
+     * @param string $message
+     */
+    public function renderError($code, $message) {
+        $this->setHeader('HTTP/1.1', $code, $message);
+        $this->setData($message);
+        
+        throw new Exception($message, $code);
     }
 }

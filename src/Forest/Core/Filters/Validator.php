@@ -25,12 +25,12 @@ class Validator
         
         if (isset($routeParameters['required'])) {
             foreach ($routeParameters['required'] as $name => $value) {
-                if (true === isset($requestParameters[$name])) {
+                if (isset($requestParameters[$name])) {
                     $value = $requestParameters[$name];
                     
                     $correct = $this->validate($type, $value);
                 } else {
-                    //@todo: $response->renderError(406, sprintf("Parameter '%s' is required."));
+                    $response->renderError(406, sprintf("Parameter '%s' is required.", $name));
                 }
             }
         }
@@ -49,8 +49,8 @@ class Validator
         
         switch ($type) {
             case 'string':
-                if (empty($value)) {
-                    $correct = false;
+                if (!empty($value)) {
+                    $correct = true;
                 }
                 break;
             
