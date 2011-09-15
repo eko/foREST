@@ -21,32 +21,20 @@ use Forest\Core\Kernel,
  */
 class Bootstrap
 {
-    
-    /**
-     * Total call duration (debug mode)
-     * @var float
-     */
-    private $duration = null;
-    
     /**
      * Constructor
      * 
      * @param string $environment
      */
     public function __construct($environment = null) {
-        $start = microtime(true);
-        
         spl_autoload_register(__CLASS__ .'::autoload');
+        
+        $this->kernel = new Kernel($environment);
         
         $this->loadConfiguration();
         $this->loadResources();
         
-        $this->kernel = new Kernel($environment);
         $this->kernel->run();
-        
-        $end = microtime(true);
-        
-        $this->duration = ($end - $start);
     }
     
     /**
@@ -177,16 +165,5 @@ class Bootstrap
      */
     public function getKernel() {
         return $this->kernel;
-    }
-    
-    /**
-     * Return total call duration
-     * 
-     * @throws \Forest\Core\Exception
-     * 
-     * @return float $_duration
-     */
-    public function getDuration() {
-        return (number_format($this->duration, 5) . 'ms');
     }
 }
