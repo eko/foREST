@@ -27,7 +27,7 @@ class Bootstrap
      * @param string $environment
      */
     public function __construct($environment = null) {
-        spl_autoload_register(__CLASS__ .'::autoload');
+        spl_autoload_register(__CLASS__ . '::autoload');
         
         $this->kernel = new Kernel($environment);
         
