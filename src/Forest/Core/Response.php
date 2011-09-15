@@ -35,6 +35,11 @@ class Response
         $this->start = microtime(true);
     }
 
+    /**
+     * Return total duration time
+     *
+     * @return float
+     */
     public function getDuration() {
         return (microtime(true) - $this->start);
     }
