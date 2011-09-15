@@ -31,10 +31,12 @@ class Bootstrap
         
         $this->kernel = new Kernel($environment);
         
-        $this->loadConfiguration();
-        $this->loadResources();
+        if (null !== $environment) {
+            $this->loadConfiguration();
+            $this->loadResources();
         
-        $this->kernel->run();
+            $this->kernel->run();
+        }
     }
     
     /**
