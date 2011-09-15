@@ -5,9 +5,7 @@ require_once __DIR__ . '/src/Forest/Bootstrap.php';
 
 $forest = new Forest\Bootstrap();
 
-use Forest\Bundle\Console\Application;
-
-$application = new Application(
+$application = new Forest\Bundle\Console\Application(
     $forest->getKernel()->getName(),
     $forest->getKernel()->getVersion()
 );

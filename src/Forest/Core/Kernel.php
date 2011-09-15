@@ -75,12 +75,14 @@ class Kernel
      * Run filters
      */
     public function run() {
-        foreach ($this->filters as $class) {
-            if (true === class_exists($class) && true === method_exists($class, 'filter')) {
-                $filter = new $class;
-                $filter->filter($this->request, $this->response);
-            } else {
-                throw new Exception(sprintf("Filter class '%s' or method 'filter' does not exists.", $class));
+        if (null !== $this->environment) {
+            foreach ($this->filters as $class) {
+                if (true === class_exists($class) && true === method_exists($class, 'filter')) {
+                    $filter = new $class;
+                    $filter->filter($this->request, $this->response);
+                } else {
+                    throw new Exception(sprintf("Filter class '%s' or method 'filter' does not exists.", $class));
+                }
             }
         }
     }
