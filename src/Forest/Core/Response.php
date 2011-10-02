@@ -23,6 +23,28 @@ class Response
     public $data = array();
     
     /**
+     * Start duration time
+     * @var float
+     */
+    private $start = 0;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->start = microtime(true);
+    }
+
+    /**
+     * Return total duration time
+     *
+     * @return float
+     */
+    public function getDuration() {
+        return (microtime(true) - $this->start);
+    }
+    
+    /**
      * Return data
      * 
      * @return array $_data

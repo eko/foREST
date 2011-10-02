@@ -39,6 +39,12 @@ class Request
      * @var string
      */
     public $uri = null;
+
+    /**
+     * HTTP Requested format
+     * @var string
+     */
+    public $format = null;
     
     /**
      * Mapping route
@@ -141,6 +147,24 @@ class Request
     public function setUri($value) {
         $this->uri = $value;
     }
+
+    /**
+     * Return requested format
+     *
+     * @return string
+     */
+    public function getFormat() {
+        return $this->format;
+    }
+
+    /**
+     * Set requested format
+     *
+     * @param string $value
+     */
+    public function setFormat($value) {
+        $this->format = $value;
+    }
     
     /**
      * Return Route
@@ -174,6 +198,8 @@ class Request
             } else {
                 $this->uri = $_SERVER['REQUEST_URI'];
             }
+            
+            $this->format = pathinfo(parse_url($this->uri, PHP_URL_PATH), PATHINFO_EXTENSION);
         }
         
         if (isset($_SERVER['SERVER_PROTOCOL'])) {
