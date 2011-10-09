@@ -193,13 +193,21 @@ class Request
         }
         
         if (isset($_SERVER['REQUEST_URI'])) {
+            $uri = null;
+            
             if (false !== strpos($_SERVER['REQUEST_URI'], '?')) {
-                $this->uri = stristr($_SERVER['REQUEST_URI'], '?', true);
+                $uri = stristr($_SERVER['REQUEST_URI'], '?', true);
             } else {
-                $this->uri = $_SERVER['REQUEST_URI'];
+                $uri = $_SERVER['REQUEST_URI'];
             }
             
-            $this->format = pathinfo(parse_url($this->uri, PHP_URL_PATH), PATHINFO_EXTENSION);
+            $pathinfo = pathinfo(parse_url($uri, PHP_URL_PATH));
+            
+            $this->uri = str_replace('//', '/', $pathinfo['dirname'] . '/' . $pathinfo['filename']);
+            
+            if (isset($pathinfo['extension'])) {
+                $this->format = $pathinfo['extension'];
+            }
         }
         
         if (isset($_SERVER['SERVER_PROTOCOL'])) {
