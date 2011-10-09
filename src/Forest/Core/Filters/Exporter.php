@@ -36,6 +36,7 @@ class Exporter
         
         $output = ob_get_clean();
         
-        echo $output; exit;
+        echo $output;
+        exit;
     }
 }
