@@ -9,7 +9,8 @@
 
 namespace Forest\Core;
 
-use Forest\Core\Exception;
+use Forest\Core\Exception,
+    Forest\Core\Filters\Exporter;
 
 /**
  * Response
@@ -83,8 +84,9 @@ class Response
      */
     public function renderError($code, $message) {
         $this->setHeader('HTTP/1.1', $code, $message);
-        $this->setData($message);
         
-        throw new Exception($message, $code);
+        $exporter = Exporter::singleton();
+        $exporter->setOutput($code . ' ' . $message);
+        $exporter->render();
     }
 }

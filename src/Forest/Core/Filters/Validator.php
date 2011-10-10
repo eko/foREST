@@ -17,6 +17,12 @@ use Forest\Core\Request,
  */
 class Validator
 {
+    /**
+     * Validator filter method (validate input parameters)
+     *
+     * @param Request &$request
+     * @param Response &$response
+     */
     public function filter(Request &$request, Response &$response) {
         $route = $request->getRoute();
         

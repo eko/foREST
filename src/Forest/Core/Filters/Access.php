@@ -17,6 +17,12 @@ use Forest\Core\Request,
  */
 class Access
 {
+    /**
+     * Access filter method (verify access control)
+     *
+     * @param Request &$request
+     * @param Response &$response
+     */
     public function filter(Request &$request, Response &$response) {
         
     }

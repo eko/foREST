@@ -59,6 +59,8 @@ class Bootstrap
      */
     private function loadConfiguration() {
         $basedir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
+        Registry::set('basedir', $basedir);
+        
         $config = $basedir . DIRECTORY_SEPARATOR . 'config/configuration.yml';
         
         if (false === file_exists($config)) {

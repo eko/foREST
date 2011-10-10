@@ -57,7 +57,7 @@ class Logger extends Abstraction {
      * @return string
      */
     public function getFilepath() {
-        return realpath($this->path) . DIRECTORY_SEPARATOR . $this->filename;
+        return Registry::get('basedir') . DIRECTORY_SEPARATOR . $this->path . DIRECTORY_SEPARATOR . $this->filename;
     }
     
     /**

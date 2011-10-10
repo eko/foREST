@@ -33,7 +33,7 @@ class Kernel
      * @var array
      */
     private $filters = array(
-        'Forest\Core\Filters\Loader',
+        'Forest\Core\Filters\Router',
         'Forest\Core\Filters\Access',
         'Forest\Core\Filters\Validator',
         'Forest\Core\Filters\Resource',

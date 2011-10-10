@@ -15,9 +15,18 @@ namespace Forest\Core;
 class Abstraction {
     /**
      * Instance object
-     * @var object $_instance
+     * @var object $instance
      */
-    private static $_instance = null;
+    private static $instance = null;
+    
+    /**
+     * Set class singleton instance
+     *
+     * @param object $instance
+     */
+    protected static function setSingleton($instance) {
+        self::$instance = $instance;
+    }
     
     /**
      * Singleton design pattern
@@ -25,11 +34,11 @@ class Abstraction {
      * @return mixed
      */
     public static function singleton() {
-        if (null === self::$_instance) {
+        if (null === self::$instance) {
             $class = get_called_class();
-            self::$_instance = new $class();
+            self::$instance = new $class();
         }
         
-        return self::$_instance;
+        return self::$instance;
     }
 }
