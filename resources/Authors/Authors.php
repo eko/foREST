@@ -24,6 +24,6 @@ class Authors extends Resource {
      * @return array
      */
     public function getAuthors(Request $request) {
-        return array('authors' => array('author1', 'author2'));
+        return $this->query('authors.list');
     }
 }

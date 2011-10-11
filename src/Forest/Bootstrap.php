@@ -32,7 +32,7 @@ class Bootstrap
         $this->kernel = new Kernel($environment);
         
         if (null !== $environment) {
-            $this->loadConfiguration();
+            $this->loadConfiguration(array('configuration', 'databases'));
             $this->loadResources();
         
             $this->kernel->run();
@@ -56,21 +56,25 @@ class Bootstrap
     
     /**
      * Load configuration
+     *
+     * @param array $files
      */
-    private function loadConfiguration() {
+    private function loadConfiguration(array $files) {
         $basedir = realpath(__DIR__ . str_repeat(DIRECTORY_SEPARATOR . '..', 2));
         Registry::set('basedir', $basedir);
         
-        $config = $basedir . DIRECTORY_SEPARATOR . 'config/configuration.yml';
-        
-        if (false === file_exists($config)) {
-            throw new Exception(sprintf('Configuration file does not exists at location: %s', $config));
+        foreach ($files as $file) {
+            $filename = $basedir . DIRECTORY_SEPARATOR . 'config/' . $file . '.yml';
+            
+            if (false === file_exists($filename)) {
+                throw new Exception(sprintf('Error while loading config file: %s', $file . '.yml'));
+            }
+            
+            $content = file_get_contents($filename);
+            $data = Yaml::parse($content);
+            
+            Registry::set($file, $data);
         }
-        
-        $content = file_get_contents($config);
-        $config = Yaml::parse($content);
-        
-        Registry::set('config', $config);
     }
     
     /**

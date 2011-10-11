@@ -68,12 +68,10 @@ class Response
     /**
      * Set response header
      * 
-     * @param string $protocol
-     * @param int $code
-     * @param string $message
+     * @param string $value
      */
-    public function setHeader($protocol, $code, $message) {
-        header($protocol . ' ' . $code . ' ' . $message);
+    public function setHeader($value) {
+        header($value);
     }
     
     /**
@@ -83,7 +81,7 @@ class Response
      * @param string $message
      */
     public function renderError($code, $message) {
-        $this->setHeader('HTTP/1.1', $code, $message);
+        $this->setHeader('HTTP/1.1 ' . $code . ' ' . $message);
         
         $exporter = Exporter::singleton();
         $exporter->setOutput($code . ' ' . $message);

@@ -9,7 +9,7 @@
 
 namespace Forest\Core;
 
-use Forest\Core\Exception as Exception;
+use Forest\Core\Exception;
 
 /**
  * Query
@@ -109,7 +109,7 @@ class Query
     }
     
     /**
-     * Set object properties by array
+     * Set object properties from array
      * 
      * @param array $query
      */
