@@ -46,7 +46,9 @@ class Exporter extends Abstraction
         $file = $path . $format . '.php';
         
         $output = $this->formatData($data, $file);
-        
+
+        $response->setHeader('Execution-Time: ' . $response->getDuration());
+
         $this->setOutput($output);
         $this->render();
     }

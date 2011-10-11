@@ -42,7 +42,7 @@ class Response
      * @return float
      */
     public function getDuration() {
-        return (microtime(true) - $this->start);
+        return number_format(((microtime(true) - $this->start) * 100), 5) . 'ms';
     }
     
     /**
