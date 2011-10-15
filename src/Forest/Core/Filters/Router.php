@@ -22,8 +22,8 @@ class Router
     /**
      * Router filter method (find the correct route)
      * 
-     * @param Request $request
-     * @param Response $response 
+     * @param Request &$request
+     * @param Response &$response 
      */
     public function filter(Request &$request, Response &$response) {
         $method = $request->getMethod();

@@ -20,8 +20,8 @@ class Validator
     /**
      * Validator filter method (validate input parameters)
      *
-     * @param Request &$request
-     * @param Response &$response
+     * @param Request $request
+     * @param Response $response
      */
     public function filter(Request &$request, Response &$response) {
         $route = $request->getRoute();
@@ -36,7 +36,7 @@ class Validator
                     
                     $correct = $this->validate($type, $value);
                 } else {
-                    $response->renderError(406, sprintf("Parameter '%s' is required.", $name));
+                    $response->renderError(sprintf("Parameter '%s' is required.", $name), 406);
                 }
             }
         }

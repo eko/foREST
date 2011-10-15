@@ -94,7 +94,7 @@ class Query
      * @return string $query
      */
     public function getQuery() {
-        return $this->query;
+        return trim($this->query);
     }
     
     /**

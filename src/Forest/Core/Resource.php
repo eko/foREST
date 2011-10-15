@@ -33,7 +33,7 @@ class Resource extends Abstraction {
         $queries = Registry::get('queries');
         
         if (!isset($queries[$key])) {
-            throw new Exception(500, sprintf('Query %s does not exists.', $key));
+            throw new Exception(sprintf('Query %s does not exists.', $key), 500);
         }
         
         $query = $queries[$key];
@@ -59,7 +59,7 @@ class Resource extends Abstraction {
         $databases = Registry::get('databases');
         
         if (!isset($databases[$name])) {
-            throw new Exception(500, sprintf('Database %s does not exists.', $name));
+            throw new Exception(sprintf('Database %s does not exists.', $name), 500);
         }
         
         if (isset($this->databases[$name])) {

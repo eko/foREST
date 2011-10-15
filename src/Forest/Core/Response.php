@@ -9,13 +9,14 @@
 
 namespace Forest\Core;
 
-use Forest\Core\Exception,
+use Forest\Core\Abstraction,
+    Forest\Core\Exception,
     Forest\Core\Filters\Exporter;
 
 /**
  * Response
  */
-class Response
+class Response extends Abstraction
 {
     /**
      * Response data
@@ -77,10 +78,10 @@ class Response
     /**
      * Render error message
      * 
-     * @param int $code
      * @param string $message
+     * @param int $code
      */
-    public function renderError($code, $message) {
+    public function renderError($message, $code) {
         $this->setHeader('HTTP/1.1 ' . $code . ' ' . $message);
         
         $exporter = Exporter::singleton();

@@ -1,6 +1,6 @@
 # Databases configuration
 
 main:
-  dsn: mysql:host=localhost;dbname=mydb
+  dsn: mysql:host=localhost;dbname=forest
   username: root
-  password: toor
+  password: root

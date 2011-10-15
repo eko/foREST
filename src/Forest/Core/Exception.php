@@ -9,6 +9,8 @@
 
 namespace Forest\Core;
 
+use Forest\Core\Response;
+
 /**
  * ForestException
  */
@@ -24,6 +26,8 @@ class Exception extends \Exception {
      */
     public function __construct ($message, $code = null, $previous = null) {
         Logger::singleton()->write($message);
-        throw new \Exception($message, $code, $previous);
+        
+        $response = Response::singleton();
+        $response->renderError($message, $code);
     }
 }

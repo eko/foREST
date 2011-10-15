@@ -3,7 +3,12 @@
 "authors.list":
   database: main
   query: >
-         SELECT *
-         FROM authors
-         WHERE name = ':name:'
-         {AND age = :age:}
+    SELECT *
+    FROM authors
+
+"authors.list.one":
+  database: main
+  query: >
+    SELECT *
+    FROM authors
+    WHERE id = ':id:'

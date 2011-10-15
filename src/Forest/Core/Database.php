@@ -91,10 +91,17 @@ class Database
         $statement = $this->pdo->prepare($query);
         
         if (!$statement->execute()) {
-            throw new Exception(500, sprintf('Error while executing query: %s', $query));
+            $infos = $statement->errorInfo();
+            $message = isset($infos[2]) ? $infos[2] : 'no info';
+            
+            throw new Exception(sprintf('Error - Query: %s', $message), 500);
         }
         
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        if (empty($result)) {
+            throw new Exception('No result', 204);
+        }
         
         return $result;
     }

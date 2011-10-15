@@ -26,13 +26,6 @@ class Exporter extends Abstraction
     private $output = null;
     
     /**
-     * Construct
-     */
-    public function __construct() {
-        parent::setSingleton($this);
-    }
-    
-    /**
      * Exporter filter method (output data)
      *
      * @param Request &$request

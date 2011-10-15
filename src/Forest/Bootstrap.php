@@ -123,7 +123,7 @@ class Bootstrap
                                 $queries = array_merge($queries, $query);
                             } else {
                                 foreach ($content as $key => $element) {
-                                    $query = array($key => new Query($key, $element));
+                                    $query = array($key => new Query($key, array($key => $element)));
                                     $queries = array_merge($queries, $query);
                                 }
                             }
