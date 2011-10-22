@@ -59,6 +59,12 @@ class Validator
                     $correct = true;
                 }
                 break;
+                
+            case 'integer':
+                if (!empty($value) && is_numeric($value)) {
+                    $correct = true;
+                }
+                break;
             
             default:
                 $correct = false;

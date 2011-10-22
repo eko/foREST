@@ -51,6 +51,12 @@ class Request
      * @var string
      */
     public $route = null;
+
+    /**
+     * HTTP user name
+     * @var string
+     */
+    public $user = null;
     
     /**
      * Constructor
@@ -183,6 +189,24 @@ class Request
     public function setRoute(Route $object) {
         $this->route = $object;
     }
+
+    /**
+     * Return user name
+     *
+     * @return string
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * Set user name
+     *
+     * @param string $value
+     */
+    public function setUser($value) {
+        $this->user = $value;
+    }
     
     /**
      * Analyze and collect request data
@@ -190,6 +214,10 @@ class Request
     public function analyze() {
         if (isset($_SERVER['REQUEST_METHOD'])) {
             $this->method = $_SERVER['REQUEST_METHOD'];
+        }
+        
+        if (isset($_SERVER['PHP_AUTH_USER'])) {
+            $this->user = $_SERVER['PHP_AUTH_USER'];
         }
         
         if (isset($_SERVER['REQUEST_URI'])) {

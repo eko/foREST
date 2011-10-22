@@ -41,6 +41,12 @@ class Route
     public $action = null;
     
     /**
+     * Route role allowed
+     * @var string
+     */
+    public $role = null;
+    
+    /**
      * Route parameters (required/optionals)
      * @var string
      */
@@ -138,6 +144,26 @@ class Route
      */
     public function setAction($action) {
         return $this->action = $action;
+    }
+    
+    /**
+     * Return allowed role
+     * 
+     * @return string $role
+     */
+    public function getRole() {
+        return $this->role;
+    }
+    
+    /**
+     * Set route role
+     * 
+     * @param string $role
+     * 
+     * @return string $role
+     */
+    public function setRole($role) {
+        return $this->role = $role;
     }
     
     /**

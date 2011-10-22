@@ -32,7 +32,14 @@ class Bootstrap
         $this->kernel = new Kernel($environment);
         
         if (null !== $environment) {
-            $this->loadConfiguration(array('configuration', 'databases'));
+            $this->loadConfiguration(
+                array(
+                    'configuration',
+                    'databases',
+                    'users'
+                )
+            );
+            
             $this->loadResources();
         
             $this->kernel->run();
