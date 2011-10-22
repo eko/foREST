@@ -5,6 +5,7 @@ Informations
 ------------
 
 This is an API written by Vincent Composieux <vincent.composieux@gmail.com>, a PHP web developer based in Paris, France.
+
 Blog : [http://vincent.composieux.fr][1]
 
 This project is using two Symfony2 components : Console and YAML parser.
@@ -48,6 +49,7 @@ There is 3 configuration files in `config/` directory, written in YAML format:
 ### Create a new user
 
 This is very simple to create a new user with the console.
+
 Simply type the following command line: `php console user:add [username] [password] [role]` (role is optional).
 Delete a user with `php console user:del [username]`.
 
