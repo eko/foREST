@@ -5,7 +5,7 @@ Informations
 ------------
 
 This is an API written by Vincent Composieux <vincent.composieux@gmail.com>, a PHP web developer.
-Blog : http://vincent.composieux.fr
+Blog : [http://vincent.composieux.fr][1]
 
 This project is using two Symfony2 components : Console and YAML parser.
 
@@ -38,9 +38,10 @@ Ok, your API is now ready to use.
 ### Configuration files
 
 There is 3 configuration files in `config/` directory, written in YAML format:
-> `configuration.yml` allow you to set configuration variables,
-> `databases.yml` allow you to define multiple databases connections to use in your API,
-> `users.yml` contains your users list with their roles to allow them to manage access to routes.
+
+`configuration.yml` allow you to set configuration variables,
+`databases.yml` allow you to define multiple databases connections to use in your API,
+`users.yml` contains your users list with their roles to allow them to manage access to routes.
 
 ### Create a new user
 
@@ -52,10 +53,11 @@ To complete your actions, don't forget to refresh the `.htpasswd` file with `php
 
 ### Create a new resource
 
-Resources consists to create 3 files :
-> `routing.yml` that contains routes,
-> `queries.yml` that can contains some databases queries,
-> `Resource.php` file (which needs to be named as same as folder name) that contains your PHP methods.
+Resources consists to create 3 files:
+
+`routing.yml` that contains routes,
+`queries.yml` that can contains some databases queries,
+`Resource.php` file (which needs to be named as same as folder name) that contains your PHP methods.
 
 For example, your `Books.php` for a Books resource which looks like this:
 
@@ -89,3 +91,5 @@ Response duration time is send to requests header.
 For more details, please looks the structure of the project or don't hesitate to contact me.
 
 Happy coding!
+
+[1]: http://vincent.composieux.fr
