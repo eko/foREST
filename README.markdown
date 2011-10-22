@@ -4,7 +4,7 @@ foREST PHP API
 Informations
 ------------
 
-This is an API written by Vincent Composieux <vincent.composieux@gmail.com>, a PHP web developer.
+This is an API written by Vincent Composieux <vincent.composieux@gmail.com>, a PHP web developer based in Paris, France.
 Blog : [http://vincent.composieux.fr][1]
 
 This project is using two Symfony2 components : Console and YAML parser.
