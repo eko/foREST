@@ -39,8 +39,10 @@ Ok, your API is now ready to use.
 
 There is 3 configuration files in `config/` directory, written in YAML format:
 
-`configuration.yml` allow you to set configuration variables,
-`databases.yml` allow you to define multiple databases connections to use in your API,
+`configuration.yml` allows you to set configuration variables.
+
+`databases.yml` allows you to define multiple databases connections to use in your API.
+
 `users.yml` contains your users list with their roles to allow them to manage access to routes.
 
 ### Create a new user
@@ -55,8 +57,10 @@ To complete your actions, don't forget to refresh the `.htpasswd` file with `php
 
 Resources consists to create 3 files:
 
-`routing.yml` that contains routes,
-`queries.yml` that can contains some databases queries,
+`routing.yml` that contains routes.
+
+`queries.yml` that can contains some databases queries.
+
 `Resource.php` file (which needs to be named as same as folder name) that contains your PHP methods.
 
 For example, your `Books.php` for a Books resource which looks like this:
