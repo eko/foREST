@@ -8,7 +8,7 @@ This is an API written by Vincent Composieux <vincent.composieux@gmail.com>, a P
 
 Blog : [http://vincent.composieux.fr][1]
 
-This project is using two Symfony2 components : Console and YAML parser.
+This project is using two Symfony2 components: Console and YAML parser.
 
 Version 1.0
 -----------
@@ -17,7 +17,7 @@ A really simple, light and powerful API fully compatible and written with PHP 5.
 
 ### Start a new project
 
-Stars by editing the `www/index.php` file contains the basis information to start a new API:
+Start by editing the `www/index.php` file contains the basis information to start a new API:
 
 ```php
 <?php
@@ -28,7 +28,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '../src/Forest/Bootstrap.php';
 $forest = new Forest\Bootstrap(APPLICATION_ENV);
 ```
 
-`APPLICATION_ENV` can be defined to set multiple your environments. You can access the environment by calling `getEnvironment()` Kernel method.
+`APPLICATION_ENV` can be defined to set multiple environments. You can access the environment by calling `getEnvironment()` Kernel method.
 
 Also, you will need to define the `.htpasswd` absolute path so you will need to change this path:
 
