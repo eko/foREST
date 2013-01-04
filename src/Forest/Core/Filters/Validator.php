@@ -30,7 +30,7 @@ class Validator
         $requestParameters = $request->getParameters();
         
         if (isset($routeParameters['required'])) {
-            foreach ($routeParameters['required'] as $name => $value) {
+            foreach ($routeParameters['required'] as $name => $type) {
                 if (isset($requestParameters[$name])) {
                     $value = $requestParameters[$name];
                     
