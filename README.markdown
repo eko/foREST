@@ -55,6 +55,8 @@ Delete a user with `php console user:del [username]`.
 
 To complete your actions, don't forget to refresh the `.htpasswd` file with `php console user:refresh`.
 
+In a Windows environment, you must add directly user:password (unencrypted) in `.htpasswd`
+
 ### Create a new resource
 
 Resources consists to create 3 files:
