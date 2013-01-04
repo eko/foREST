@@ -231,7 +231,7 @@ class Request
             
             $pathinfo = pathinfo(parse_url($uri, PHP_URL_PATH));
             
-            $this->uri = str_replace('//', '/', $pathinfo['dirname'] . '/' . $pathinfo['filename']);
+            $this->uri = str_replace('\/', '/',str_replace('//', '/', $pathinfo['dirname'] . '/' . $pathinfo['filename']));
             
             if (isset($pathinfo['extension'])) {
                 $this->format = $pathinfo['extension'];
